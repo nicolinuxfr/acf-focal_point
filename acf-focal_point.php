@@ -2,11 +2,11 @@
 
 /*
 Plugin Name: ACF: Focal Point
-Plugin URI: https://github.com/evu/acf-focal_point
+Plugin URI: https://github.com/nicolinuxfr/acf-focal_point
 Description: Adds a new field type to Advanced Custom Fields allowing users to draw focal points on images.
-Version: 1.5
-Author: John Healey
-Author URI: http://twitter.com/lostinnovation
+Version: 1.6
+Author: John Healey and Nicolas Furno
+Author URI: https://voiretmanger.fr
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
