@@ -1,5 +1,6 @@
 .acf-focal_point-image {
 	display: inline-block;
+	max-width: 100%;
 }
 .acf-focal_point .has-image {
 	display: none;

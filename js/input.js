@@ -8,16 +8,14 @@
 		var $id		= $el.find('.acf-focal_point-id'),
 			$top	= $el.find('.acf-focal_point-top'),
 			$left	= $el.find('.acf-focal_point-left'),
-
+			
 			// Elements to get/set 
 			$fp		= $el.find('.acf-focal_point'),
 			$img	= $el.find('.acf-focal_point-image'),
 			$icon	= $el.find('.acf-focal_point-icon'),
 
 			// Buttons to trigger events
-			$add	= $el.find('.add-image'),
-			$del	= $el.find('.acf-button-delete');
-
+			$add	= $el.find('.add-image');
 
 		// Hold/get our values
 		var values = {
@@ -82,27 +80,7 @@
 
 			// Finally, open the modal
 			file_frame.open();
-		});
-
-
-		// When we click the delete image button...
-		$del.on('click', function(){
-
-			// Reset DOM image attributes
-			$img.removeAttr('src width height');
-
-			// Hide canvas and show add image button
-			$fp.removeClass('active');
-
-			// Reset our post values
-			$id.val('');
-			$top.val('');
-			$left.val('').trigger('change');
-			
-			// reset to default
-			icon.style.left = null;
-			icon.style.top = null;
-		});
+		});		
 
 		// When we click on the image...
 		img.addEventListener("click", function(e) {

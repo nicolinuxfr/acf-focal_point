@@ -144,18 +144,27 @@ class acf_field_focal_point extends acf_field {
 
 		// Merge defaults
 		$field = array_merge($this->defaults, $field);
-		
-		// Get set image id
-		$id = (isset($field['value']['id'])) ? $field['value']['id'] : '';
 
+		// Get set image id
+		if ( has_post_thumbnail($post_id) ) {
+			$id = get_post_thumbnail_id($post_id);
+		} else {	
+		$id = (isset($field['value']['id'])) ? $field['value']['id'] : '';
+		}
+
+		if (get_field('position')) {
+			$position_old = get_field('position');
+			$positions = explode("%", $position_old);
+			$field['value']['left'] = ($positions[0]/100);
+			$field['value']['top'] = ($positions[1]/100);
+			delete_field('position');
+		}
 
 		// data vars
 		$data = array(
 			'top'		=>	isset($field['value']['top']) ? $field['value']['top'] : '',
 			'left'		=>	isset($field['value']['left']) ? $field['value']['left'] : '',
 		);
-		
-
 		
 		// If we already have an image set...
 		if ($id) {
@@ -188,7 +197,6 @@ class acf_field_focal_point extends acf_field {
 			<path class="components-focal-point-picker__icon-outline" d="M15 1C7.3 1 1 7.3 1 15s6.3 14 14 14 14-6.3 14-14S22.7 1 15 1zm0 22c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"></path>
 			<path class="components-focal-point-picker__icon-fill" d="M15 3C8.4 3 3 8.4 3 15s5.4 12 12 12 12-5.4 12-12S21.6 3 15 3zm0 22C9.5 25 5 20.5 5 15S9.5 5 15 5s10 4.5 10 10-4.5 10-10 10z"></path>
 		</svg>
-		<span class="acf-button-delete acf-icon -cancel acf-icon-cancel dark" data-name="remove"></span>
 		<img class="acf-focal_point-image" src="<?php echo $url; ?>" />
 	</div>
 
